@@ -1,0 +1,45 @@
+<button mat-raised-button class="btn-center mt-4" (click)="addUser()" style="text-align:justify" color="primary">Add User</button>
+<mat-spinner class="center mt-5" *ngIf="loading"></mat-spinner>
+<table *ngIf="!loading" class="table table-striped table-bordered table-hover table-responsive"
+border="2px" style="margin-top: 40px;">
+  <thead *ngIf="!err" class="thead-dark">
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Username</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody *ngFor="let user of usersData">
+    <tr (click)="openUserDetails(user)">
+      <td>{{user.name}}</td>
+      <td>{{user.email}}</td>
+      <td>{{user.username}}</td>
+      <td>
+        <button (click)="onDeleteUser(user)" class="btn btn-space" mat-raised-button color="warn">Delete</button>
+        <button (click)="onEditUser(user)" class="btn btn-space" mat-raised-button color="primary">Edit</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- <div class="center" *ngIf="err && !loading">
+  <div class="col d-flex justify-content-center mt-5">
+    <div class="row">
+      <mat-icon>error_outline</mat-icon>
+    </div>
+  </div>
+  <div class="col d-flex justify-content-center mt-2">
+    <div class="row">
+      <span>Error Occured!</span>
+    </div>
+  </div>
+  <div class="col d-flex justify-content-center mt-2">
+    <div class="row">
+      <button mat-raised-button color="accent" (click)="onTryAgain()">Try Again</button>
+    </div>
+  </div>
+</div> -->
+
+<app-error-cmp (reload)="onTryAgain()" [errorTitle]="errData.statusText" *ngIf="err && !loading"></app-error-cmp>
+

@@ -1,0 +1,16 @@
+.center{
+  position: absolute;
+  padding: 12px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.btn-space {
+  margin-right: 10px;
+}
+
+.btn-center {
+  margin-left:45%;
+  margin-right:50%;
+}
